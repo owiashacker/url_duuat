@@ -211,7 +211,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <button type="submit">تسجيل الدخول</button>
             <a href="create_account.php" class="centered-link_1">إنشاء حساب جديد</a>
-            <a href="index.php" class="centered-link">نسيت كلمة المرور</a>
+
 
         </form>
     </div>
