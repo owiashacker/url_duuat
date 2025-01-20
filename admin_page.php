@@ -11,221 +11,257 @@ $name = $_SESSION['user_number'];
 ?>
 
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        rel="stylesheet" />
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap"
-        rel="stylesheet" />
-    <link rel="icon" href="heder-icon.png"
-        type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-beta.1/css/select2.min.css" rel="stylesheet" />
-
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <title>Document</title>
+    <title>المدير العام</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --sidebar-width: 280px;
         }
 
-        body {
-            font-family: 'Noto Kufi Arabic', serif;
-
-            background-color: #f5f5f5;
-            margin: 0px 2px 8px;
-            padding: 20px;
-            direction: rtl;
-            text-align: start;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        h2 {
-            font-size: 25px;
-            display: block;
-            height: 55px;
-            border-radius: 9px;
-            background-color: rgb(11, 153, 141);
-            color: rgb(255, 255, 255);
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-            line-height: 55px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .button {
-            padding: 10px 20px;
-            background-color: rgb(11, 153, 141);
-            font-size: 16px;
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            right: -280px;
+            top: 0;
+            background: #2c3e50;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .button:hover {
-            background-color: #0056b3;
+        .sidebar.show {
+            right: 0;
         }
 
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-            background: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
+        .main-content {
+            transition: all 0.3s;
         }
 
-        th,
-        td {
+        .navbar {
+            background-color: #2c3e50 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .user-profile {
+            background-color: #2c3e50;
+            padding: 20px;
             text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #3498db;
+            display: flex;
             align-items: center;
-            padding: 10px;
-            border: 1px solid #ddd;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 15px;
+        }
+
+        .table th,
+        .table td {
+            border-left: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            border-left: none;
+        }
+
+        #toggle-sidebar {
+            position: fixed;
+            right: 10px;
+            top: 15px;
+            z-index: 1100;
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            border-left: none;
+        }
+
+        .table th,
+        .table td {
+            border-left: 1px solid #ddd;
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            border-left: none;
+        }
+
+        .table th,
+        .table td {
+            border-left: 1px solid #ddd;
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            border-left: none;
+        }
+
+        .table th,
+        .table td {
+            border-left: 1px solid #ddd;
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            border-left: none;
         }
 
         th {
-            background-color: rgb(11, 153, 141);
-            color: white;
+            background-color: #2c3e50 !important;
+            color: white !important;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .btn-group button {
+            margin: 0 5px;
         }
 
-        tr:hover {
-            background-color: rgba(11, 153, 141, 0.1);
+        th:last-child,
+        td:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
         }
 
-        .update {
-            margin: 3px;
-        }
-
-        .get_serch,
-        .get_location {
-            text-decoration: none;
-            color: rgb(11, 153, 141);
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-            font-weight: 600;
-            letter-spacing: -1px;
-            word-spacing: -0.10cap;
-        }
-
-        .select2-selection.select2-selection--single,
-        .select2-selection__rendered,
-        .select2-selection__arrow {
-            height: 48px !important;
-        }
-
-        .select2-selection__rendered,
-        .select2-selection__arrow {
-            line-height: 48px !important;
+        th:first-child,
+        td:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
     </style>
-
 </head>
 
 <body>
-    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: rgb(11, 153, 141); border-radius: 6px;">
-        <span style="font-size: 20px; color: rgb(255, 255, 255); font-weight: bold;">أهلاً بك: <strong><?php echo $name; ?></strong></span>
-        <div style="text-align: right; font-size: 16px; color: rgb(255, 255, 255);">
-            <a href="logout.php" class="logout-button" style="font-size: 16px; color: rgb(255, 255, 255); font-weight: bold;">
-                <i class="bi bi-door-closed" style="font-size: x-large; color: rgb(56, 39, 39);"></i> تسجيل الخروج
-            </a>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="btn btn-light" id="toggle-sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="ms-auto d-flex align-items-center">
+                <div class="d-flex align-items-center me-3">
+                    <div class="user-avatar me-2" style="width: 40px; height: 40px; font-size: 1.2rem;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <h6 class="mb-0">اسم المستخدم</h6>
+                </div>
+            </div>
+            <button class="btn btn-danger btn-sm ms-auto">
+                <i class="bi bi-door-open-fill me-1"></i>
+                تسجيل الخروج
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <div class="overflow-auto w-100" style="height: 400px;">
-        <table id="lessons-table" style="width: 100%; border-collapse: collapse;">
-            <thead>
-                <tr>
-                    <th style="position: sticky; top: 0; z-index: 10;">#</th>
-                    <th style="position: sticky; top: 0; z-index: 10;">عنوان الرابط</th>
-                    <th style="position: sticky; top: 0; z-index: 10;">الإجراءات</th>
-                    <th style="position: sticky; top: 0; z-index: 10;">الملاحظات</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <i class="bi bi-person-fill"></i>
+            </div>
+            <h5 class="mb-2">اسم المستخدم</h5>
+        </div>
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <i class="bi bi-speedometer2 ms-2"></i>
+                    لوحة التحكم
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-people-fill ms-2"></i>
+                    الملف الشخصي
+                </a>
+            </li>
+            </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-gear-fill ms-2"></i>
+                    الإعدادات
+                </a>
+            </li>
+        </ul>
     </div>
 
-    <?php
-    /*                 if ($rows->num_rows > 0) {
-                    while ($row = $rows->fetch_assoc()) {
-                        echo '
-              <tr>
-                  <td>' . $row['id'] . '</td>
-                  <td>' . $row['location'] . '</td>
-                  <td>' . $row['day'] . '</td>
-                  <td>' . $row['ders_tame'] . '</td>
-                  <td>' . $row['book'] . '</td>
-                  <td>' . $row['teacher'] . '</td>
-                  <td>' . $row['notes'] . '</td>
-                  <td>
-                      <div class="d-flex justify-content-center gap-2 align-items-center">
-                          <a class="btn py-2 btn-primary update" href="update.php?id=' . $row['id'] . '">
-                              <i class="bi bi-pencil-square"></i>
-                          </a>
-                          <a class="btn py-2 btn-danger" href="delet.php?id=' . $row['id'] . '" onclick="return confirmDelete();">
-                              <i class="bi bi-trash"></i>
-                          </a>
-                      </div>
-                  </td>
-              </tr>
-              ';
-                    }
-                } else {
-                    echo '
-            <tr>
-              <td colspan="8">لا توجد بيانات</td>
-            </tr>
-            ';
-                } */ ?>
-    </tbody>
-    </table>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container-fluid mt-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead>
+                                <tr>
+                                    <th width="80">الآيدي</th>
+                                    <th>عنوان الرابط</th>
+                                    <th width="300">الإجراءات</th>
+                                    <th>الملاحظات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>https://example.com</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-success btn-sm" title="نسخ">
+                                                <i class="bi bi-clipboard"></i>
+                                            </button>
+                                            <button class="btn btn-info btn-sm" title="فتح">
+                                                <i class="bi bi-box-arrow-up-right"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>ملاحظة تجريبية</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('toggle-sidebar');
+
+        toggleButton.addEventListener('click', function() {
+            if (sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+                toggleButton.style.right = '10px';
+            } else {
+                sidebar.classList.add('show');
+                toggleButton.style.right = '290px';
+            }
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

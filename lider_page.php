@@ -125,6 +125,18 @@
         .btn-group button {
             margin: 0 5px;
         }
+
+        th:last-child,
+        td:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        th:first-child,
+        td:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
     </style>
 </head>
 

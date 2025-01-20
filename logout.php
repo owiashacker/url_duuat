@@ -100,7 +100,7 @@ $name = $_SESSION['user_number'];
         }
 
         .btn-no {
-            background-color: #007bff;
+            background-color: #2c3e50;
         }
 
         .btn-no:hover {

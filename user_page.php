@@ -22,7 +22,7 @@ $name = $_SESSION['user_number'];
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #34495e;
-            --accent-color: #3498db;
+            --accent-color: #2c3e50;
         }
 
         body {
@@ -80,7 +80,7 @@ $name = $_SESSION['user_number'];
         }
 
         .btn-logout {
-            background-color: var(--accent-color);
+            background-color: #2c3e50;
             color: white;
             border: none;
             padding: 0.8rem 2rem;
