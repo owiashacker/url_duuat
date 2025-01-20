@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 $sql_query = mysqli_stmt_execute($stmt);
 
                 if ($sql_query) {
-                    $user_qury = "select * from users where user_name = '$name'";
+                    $user_qury = "select * from users where user_number = '$name'";
                     $sql_qury = mysqli_query($conn, $user_qury);
-                    $_SESSION['user_name'] = $name;
+                    $_SESSION['user_number'] = $name;
                     $_SESSION['role'] = $sql_query;
                     header("Location: user_page.php");
                     exit;

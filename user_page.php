@@ -1,22 +1,18 @@
 <?php
+include('conn.php');
 session_start();
 
-include('conn.php');
-
-if (!isset($_SESSION['user_name'])) {
-    header("Location: create_account.php");
-    exit();
+if (!isset($_SESSION['user_number']) || $_SESSION['role'] !== 'user') {
+    header('Location: login.php');
+    exit;
 }
 
-$name = $_SESSION['user_name'];
-
-
-
-
+$name = $_SESSION['user_number'];
 ?>
 
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +24,7 @@ $name = $_SESSION['user_name'];
             --secondary-color: #34495e;
             --accent-color: #3498db;
         }
-        
+
         body {
             background-color: #f0f2f5;
             min-height: 100vh;
@@ -95,7 +91,7 @@ $name = $_SESSION['user_name'];
         }
 
         .btn-logout:hover {
-            background-color:rgb(204, 22, 16);
+            background-color: rgb(204, 22, 16);
             transform: translateY(-1px);
             color: white;
             text-decoration: none;
@@ -106,24 +102,25 @@ $name = $_SESSION['user_name'];
                 margin: 1rem;
                 padding: 1.5rem;
             }
-            
+
             .welcome-header {
                 font-size: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="welcome-container">
         <h1 class="welcome-header text-center">
             مرحباً بك <?php echo htmlspecialchars($name); ?>
         </h1>
-        
+
         <div class="text-center">
             <div class="status-badge">
                 تم تسجيل الحساب بنجاح
             </div>
-            
+
             <p class="welcome-message">
                 شكراً لتسجيلك معنا، حسابك قيد المراجعة الآن، وسيتم ترقيته بعد موافقة الإدارة.
             </p>
@@ -134,4 +131,5 @@ $name = $_SESSION['user_name'];
         </div>
     </div>
 </body>
+
 </html>

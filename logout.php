@@ -5,7 +5,7 @@ $role = $_SESSION['role'];
 $sql_query = "SELECT * FROM users WHERE role = $role";
 
 
-if (!isset($_SESSION['user_name'])) {
+if (!isset($_SESSION['user_number'])) {
     header("Location: create_account.php");
     exit();
 }
@@ -24,7 +24,7 @@ if (isset($_POST['yes'])) {
         exit();
     }
 }
-$name = $_SESSION['user_name'];
+$name = $_SESSION['user_number'];
 ?>
 
 <!DOCTYPE html>

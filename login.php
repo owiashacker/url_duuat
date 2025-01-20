@@ -5,18 +5,18 @@ session_start();
 $error_massage = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = trim($_POST['user_name']);
+    $user_number = trim($_POST['user_number']);
     $password = trim($_POST['password']);
 
-    if (empty($name) || empty($password)) {
+    if (empty($user_number) || empty($password)) {
         $error_massage = "يجب تعبئة جميع الحقول";
     } else {
-        $sql = "SELECT * FROM users WHERE user_name = '$name' AND password = '$password'";
+        $sql = "SELECT * FROM users WHERE user_number = '$user_number' AND password = '$password'";
         $result = mysqli_query($conn, $sql);
-        
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $_SESSION['user_name'] = $row['user_name'];
+            $_SESSION['user_number'] = $row['user_number'];
             if ($row['role'] == 'user') {
                 $_SESSION['role'] = 'user';
                 header("Location: user_page.php");
@@ -195,15 +195,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1> تسجيل الدخول </h1>
         <form action="" method="POST" autocomplete="off">
             <div>
-         
+
             </div>
-            <label for="user_name"> اسم المستخدم: </label>
+            <label for="user_number"> رقمك في المؤسسة : </label>
             <div class="error">
-            <?php
+                <?php
                 if (isset($error_massage)) echo $error_massage;
                 ?>
-                </div>
-            <input type="text" id="user_name" name="user_name" placeholder="اسم المستخدم " required>
+            </div>
+            <input type="text" id="user_number" name="user_number" placeholder="رقمك في المؤسسة " required>
 
             <label for="password"> كلمة المرور:</label>
 
@@ -217,6 +217,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Q6T9PpcMuRYcBOYeQ7WpdQJwNcSwwtbmsyGe6CF5JsFecJXx7HC36p6PImqM6YOE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Q6T9PpcMuRYcBOYeQ7WpdQJwNcSwwtbmsyGe6CF5JsFecJXx7HC36p6PImqM6YOE" crossorigin="anonymous"></script>
 
 </html>

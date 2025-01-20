@@ -2,14 +2,12 @@
 include('conn.php');
 session_start();
 
-if (!isset($_SESSION['user_name'])) {
-    header("Location: create_account.php");
-    exit();
+if (!isset($_SESSION['user_number']) || $_SESSION['role'] !== 'admin') {
+    header('Location: login.php');
+    exit;
 }
 
-$name = $_SESSION['user_name'];
-
-
+$name = $_SESSION['user_number'];
 ?>
 
 <!DOCTYPE html>
@@ -168,33 +166,33 @@ $name = $_SESSION['user_name'];
 </head>
 
 <body>
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: rgb(11, 153, 141); border-radius: 6px;">
-    <span style="font-size: 20px; color: rgb(255, 255, 255); font-weight: bold;">أهلاً بك: <strong><?php echo $name; ?></strong></span>
-    <div style="text-align: right; font-size: 16px; color: rgb(255, 255, 255);">
-        <a href="logout.php" class="logout-button" style="font-size: 16px; color: rgb(255, 255, 255); font-weight: bold;">
-            <i class="bi bi-door-closed" style="font-size: x-large; color: rgb(56, 39, 39);"></i> تسجيل الخروج
-        </a>
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background-color: rgb(11, 153, 141); border-radius: 6px;">
+        <span style="font-size: 20px; color: rgb(255, 255, 255); font-weight: bold;">أهلاً بك: <strong><?php echo $name; ?></strong></span>
+        <div style="text-align: right; font-size: 16px; color: rgb(255, 255, 255);">
+            <a href="logout.php" class="logout-button" style="font-size: 16px; color: rgb(255, 255, 255); font-weight: bold;">
+                <i class="bi bi-door-closed" style="font-size: x-large; color: rgb(56, 39, 39);"></i> تسجيل الخروج
+            </a>
+        </div>
+    </header>
+
+    <div class="overflow-auto w-100" style="height: 400px;">
+        <table id="lessons-table" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="position: sticky; top: 0; z-index: 10;">#</th>
+                    <th style="position: sticky; top: 0; z-index: 10;">عنوان الرابط</th>
+                    <th style="position: sticky; top: 0; z-index: 10;">الإجراءات</th>
+                    <th style="position: sticky; top: 0; z-index: 10;">الملاحظات</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
-</header>
 
-<div class="overflow-auto w-100" style="height: 400px;">
-    <table id="lessons-table" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th style="position: sticky; top: 0; z-index: 10;">#</th>
-                <th style="position: sticky; top: 0; z-index: 10;">عنوان الرابط</th>
-                <th style="position: sticky; top: 0; z-index: 10;">الإجراءات</th>
-                <th style="position: sticky; top: 0; z-index: 10;">الملاحظات</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
-</div>
-
-                <?php
-                /*                 if ($rows->num_rows > 0) {
+    <?php
+    /*                 if ($rows->num_rows > 0) {
                     while ($row = $rows->fetch_assoc()) {
                         echo '
               <tr>
@@ -225,8 +223,8 @@ $name = $_SESSION['user_name'];
             </tr>
             ';
                 } */ ?>
-            </tbody>
-        </table>
+    </tbody>
+    </table>
     </div>
 </body>
 
