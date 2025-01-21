@@ -25,6 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['role'] = 'admin';
                 header("Location: admin_page.php");
                 exit;
+            }elseif ($row['role'] == 'lider') {
+                $_SESSION['role'] = 'lider';
+                header("Location: lider_page.php");
+                exit;
             }
         } else {
             $error_massage = "اسم المستخدم او كلمة المرور غير صحيحة";
@@ -56,7 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             padding: 0;
             direction: rtl;
             overflow: hidden;
-            /* يمنع السكرول */
         }
 
         body::after {

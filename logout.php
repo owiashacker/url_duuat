@@ -23,6 +23,10 @@ if (isset($_POST['yes'])) {
         header("Location: admin_page.php");
         exit();
     }
+    elseif($role == 'lider'){
+        header("Location: lider_page.php");
+        exit();
+    }
 }
 $name = $_SESSION['user_number'];
 ?>

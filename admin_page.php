@@ -149,6 +149,14 @@ $name = $_SESSION['user_number'];
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
+
+        .nav-link {
+            color: #ddd;
+        }
+
+        .nav-link:hover {
+            color: aqua;
+        }
     </style>
 </head>
 
@@ -191,7 +199,7 @@ $name = $_SESSION['user_number'];
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="profile.php">
                     <i class="bi bi-people-fill ms-2"></i>
                     الملف الشخصي
                 </a>
@@ -199,9 +207,9 @@ $name = $_SESSION['user_number'];
             </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-gear-fill ms-2"></i>
-                    الإعدادات
+                <a class="nav-link" href="logout.php">
+                    <i class="bi bi-door-open-fill me-1"></i>
+                    تسجيل الخروج
                 </a>
             </li>
         </ul>

@@ -1,3 +1,14 @@
+<?php
+include('conn.php');
+session_start();
+
+if (!isset($_SESSION['user_number']) || $_SESSION['role'] !== 'lider') {
+    header('Location: login.php');
+    exit;
+}
+$name = $_SESSION['user_number'];
+?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -7,7 +18,12 @@
     <title>المدير العام</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet" />
+
     <style>
+        body{
+            font-family: 'Noto Kufi Arabic', serif;
+        }
         :root {
             --sidebar-width: 280px;
         }
@@ -137,6 +153,13 @@
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
+        .nav-link {
+            color: #ddd;
+        }
+
+        .nav-link:hover {
+            color: aqua;
+        }
     </style>
 </head>
 
@@ -191,9 +214,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="bi bi-gear-fill ms-2"></i>
-                    الإعدادات
+                <a class="nav-link" href="logout.php">
+                <i class="bi bi-door-open-fill me-1"></i>
+                    تسجيل الخروج
                 </a>
             </li>
         </ul>
