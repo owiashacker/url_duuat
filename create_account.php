@@ -36,24 +36,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
                 // رقم المستخدم موجود بالفعل
                 $errornumber = "رقم المستخدم مسجل مسبقًا. يرجى اختيار رقم آخر.";
             } else {
-                // إذا كان الرقم غير موجود، يتم إدخال البيانات
-                $sql = "INSERT INTO users (user_name, password , user_number) VALUES (?, ?, ?)";
+                // إدخال البيانات في قاعدة البيانات
+                $sql = "INSERT INTO users (user_name, password, user_number) VALUES (?, ?, ?)";
                 $stmt = mysqli_prepare($conn, $sql);
                 mysqli_stmt_bind_param($stmt, 'sss', $name, $password, $user_number);
                 $sql_query = mysqli_stmt_execute($stmt);
 
                 if ($sql_query) {
-                    $user_qury = "select * from users where user_number = '$name'";
-                    $sql_qury = mysqli_query($conn, $user_qury);
-                    $_SESSION['user_number'] = $name;
-                    $_SESSION['role'] = $sql_query;
-                    header("Location: user_page.php");
-                    exit;
+                    // استرجاع بيانات المستخدم بعد الإدخال
+                    $user_query = "SELECT * FROM users WHERE user_number = ?";
+                    $stmt = mysqli_prepare($conn, $user_query);
+                    mysqli_stmt_bind_param($stmt, 's', $user_number);
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $_SESSION['user_number'] = $row['user_number'];
+                        $_SESSION['user_name'] = $row['user_name'];  // إضافة اسم المستخدم إلى الجلسة
+                        $_SESSION['role'] = $row['role'] ?? 'user';  // في حال كان لديك عمود للدور
+
+                        // إعادة التوجيه إلى صفحة المستخدم
+                        header("Location: user_page.php");
+                        exit;
+                    }
                 }
             }
         }
     }
 }
+
 ?>
 
 
