@@ -1,46 +1,157 @@
+<?php
+// بيانات المستخدم (يمكن جلبها من قاعدة البيانات)
+$userData = [
+    'name' => 'أحمد محمد علي',
+    'institutionId' => '2024-001',
+    'email' => 'ahmed.m@example.com',
+    'phone' => '٠٥٠ ١٢٣ ٤٥٦٧',
+    'password' => '••••••••'
+];
+?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الملف الشخصي</title>
-    <!-- إضافة روابط Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- إضافة Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- إضافة الخط -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- إضافة Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            font-family: 'Noto Kufi Arabic', sans-serif !important;
+        }
+
+        .profile-header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .profile-avatar {
+            width: 96px;
+            height: 96px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 50%;
+            padding: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .info-card {
+            background-color: rgb(248, 250, 252);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .info-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        .edit-button:hover {
+            background-color: #34495e;
+        }
+
+        .info-label {
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon {
+            color: #2c3e50;
+        }
+    </style>
 </head>
-<body>
 
-<!-- بوكس العرض باستخدام الـ Grid system من Bootstrap -->
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="text-center mb-4">الملف الشخصي</h2>
-
-                    <!-- قسم اسم المستخدم -->
-                    <div class="mb-3">
-                        <label for="username" class="form-label">اسم المستخدم:</label>
-                        <span id="username" class="form-control">اسم المستخدم هنا</span>
+<body class="bg-light">
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <!-- رأس الصفحة مع الصورة -->
+                    <div class="profile-header">
+                        <div class="profile-avatar mb-2">
+                            <svg class="w-100 h-100 text-secondary" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12 14.25c3.97 0 7.19 2.795 7.19 6.25H4.81c0-3.455 3.22-6.25 7.19-6.25zM12 13a4.5 4.5 0 110-9 4.5 4.5 0 010 9z" />
+                            </svg>
+                        </div>
+                        <h1 class="h5 fw-bold mb-1">الملف الشخصي</h1>
                     </div>
 
-                    <!-- قسم الرقم في المؤسسة -->
-                    <div class="mb-3">
-                        <label for="employeeNumber" class="form-label">رقم المستخدم في المؤسسة:</label>
-                        <span id="employeeNumber" class="form-control">رقم المستخدم هنا</span>
-                    </div>
+                    <!-- معلومات المستخدم -->
+                    <div class="p-4">
+                        <div class="info-card">
+                            <div class="info-label">
+                                <i data-lucide="user" class="icon"></i>
+                                الاسم الكامل
+                            </div>
+                            <p class="h5 mb-0 pe-7"><?php echo htmlspecialchars($userData['name']); ?></p>
+                        </div>
 
-                    <!-- قسم كلمة المرور -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">كلمة المرور:</label>
-                        <span id="password" class="form-control">كلمة المرور هنا</span>
+                        <div class="info-card">
+                            <div class="info-label">
+                                <i data-lucide="building" class="icon"></i>
+                                رقمك في المؤسسة
+                            </div>
+                            <p class="h5 mb-0 pe-7"><?php echo htmlspecialchars($userData['institutionId']); ?></p>
+                        </div>
+
+
+                        <div class="info-card">
+                            <div class="info-label">
+                                <i data-lucide="phone" class="icon"></i>
+                                رقم الجوال
+                            </div>
+                            <p class="h5 mb-0 pe-7"><?php echo htmlspecialchars($userData['phone']); ?></p>
+                        </div>
+
+                        <div class="info-card">
+                            <div class="info-label">
+                                <i data-lucide="key" class="icon"></i>
+                                كلمة المرور
+                            </div>
+                            <p class="h5 mb-0 pe-7"><?php echo htmlspecialchars($userData['password']); ?></p>
+                        </div>
+
+                        <!-- زر تعديل الملف الشخصي -->
+                        <div class="text-center mt-4">
+                            <button class="edit-button">
+                                تعديل المعلومات
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- إضافة رابط لملف JavaScript الخاص بـ Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0I1DX5D5oYcx61Qk/eYwF8zA5uXKdfh3enb3zYjI7C5qvOg5" crossorigin="anonymous"></script>
+    <!-- تهيئة Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
+
 </html>

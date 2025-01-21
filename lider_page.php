@@ -196,9 +196,9 @@ $name = $_SESSION['user_number'];
         </div>
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="profile.php">
                     <i class="bi bi-speedometer2 ms-2"></i>
-                    لوحة التحكم
+                     الملف الشخصي 
                 </a>
             </li>
             <li class="nav-item">
@@ -231,7 +231,7 @@ $name = $_SESSION['user_number'];
                         <table class="table table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th width="80">الآيدي</th>
+                                    <th width="80">#</th>
                                     <th>عنوان الرابط</th>
                                     <th width="300">الإجراءات</th>
                                     <th>الملاحظات</th>

@@ -19,7 +19,12 @@ $name = $_SESSION['user_number'];
     <title>المدير العام</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet" />
     <style>
+        body {
+            font-family: 'Noto Kufi Arabic', serif;
+        }
+
         :root {
             --sidebar-width: 280px;
         }
@@ -193,7 +198,7 @@ $name = $_SESSION['user_number'];
         </div>
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" href="admin_page.php">
                     <i class="bi bi-speedometer2 ms-2"></i>
                     لوحة التحكم
                 </a>
@@ -224,7 +229,7 @@ $name = $_SESSION['user_number'];
                         <table class="table table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th width="80">الآيدي</th>
+                                    <th width="80">#</th>
                                     <th>عنوان الرابط</th>
                                     <th width="300">الإجراءات</th>
                                     <th>الملاحظات</th>
