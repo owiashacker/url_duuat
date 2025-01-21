@@ -246,7 +246,11 @@ $name = $_SESSION['user_number'];
             <input type="url" id="url" name="url" required>
         </div>
         <div class="form-group">
+<<<<<<< HEAD
             <label for="location">المشرف المسموح بالاطلاع على الرابط:</label>
+=======
+            <label for="location">المشرف:</label>
+>>>>>>> 59840f00f7b9c9cdc56588fab5f5f717e3c75ad8
             <select class="form-control select2" id="location" name="location" required>
                 <option value="" disabled selected>اختر مشرف</option>
                 <?php
