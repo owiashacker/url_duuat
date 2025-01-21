@@ -198,15 +198,21 @@ $name = $_SESSION['user_number'];
         </div>
         <ul class="nav flex-column mt-3">
             <li class="nav-item">
-                <a class="nav-link active" href="admin_page.php">
-                    <i class="bi bi-speedometer2 ms-2"></i>
-                    لوحة التحكم
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="profile.php">
                     <i class="bi bi-people-fill ms-2"></i>
                     الملف الشخصي
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="admin_page.php">
+                <i class="bi bi-link-45deg ms-2"></i>
+                    الروابط العامة 
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="admin_page.php">
+                <i class="bi bi-link-45deg ms-2"></i>
+                    الروابط الخاصة 
                 </a>
             </li>
             </a>

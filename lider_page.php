@@ -210,7 +210,19 @@ $name = $_SESSION['user_number'];
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="bi bi-link-45deg ms-2"></i>
-                    إضافة الروابط
+                كافة الروابط  
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-link-45deg ms-2"></i>
+                    إضافة الروابط الخاصة 
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-link-45deg ms-2"></i>
+                    إضافة الروابط العامة 
                 </a>
             </li>
             <li class="nav-item">
