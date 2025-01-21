@@ -21,9 +21,10 @@ $name = $_SESSION['user_number'];
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet" />
 
     <style>
-        body{
+        body {
             font-family: 'Noto Kufi Arabic', serif;
         }
+
         :root {
             --sidebar-width: 280px;
         }
@@ -153,6 +154,7 @@ $name = $_SESSION['user_number'];
             border-top-right-radius: 5px;
             border-bottom-right-radius: 5px;
         }
+
         .nav-link {
             color: #ddd;
         }
@@ -198,7 +200,7 @@ $name = $_SESSION['user_number'];
             <li class="nav-item">
                 <a class="nav-link active" href="profile.php">
                     <i class="bi bi-speedometer2 ms-2"></i>
-                     الملف الشخصي 
+                    الملف الشخصي
                 </a>
             </li>
             <li class="nav-item">
@@ -227,13 +229,51 @@ $name = $_SESSION['user_number'];
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">
-                <i class="bi bi-door-open-fill me-1"></i>
+                    <i class="bi bi-door-open-fill me-1"></i>
                     تسجيل الخروج
                 </a>
             </li>
         </ul>
     </div>
 
+    <form action="" method="post">
+        <div>
+            <label for="url">عنوان الرابط:</label>
+            <input type="text" id="url" name="url" required>
+        </div>
+        <div>
+            <label for="url"> الرابط:</label>
+            <input type="url" id="url" name="url" required>
+        </div>
+        <div class="form-group">
+            <label for="location">المشرف المسموح بالاطلاع على الرابط:</label>
+            <select class="form-control select2" id="location" name="location" required>
+                <option value="" disabled selected>اختر مشرف</option>
+                <?php
+                if ($rows_1->num_rows > 0) {
+                    while ($row_1 = $rows_1->fetch_assoc()) {
+                        echo '<option value="' . $row_1['location_name'] . '">' . $row_1['location_name'] . '</option>';
+                    }
+                } else {
+                    echo '<option value="" disabled>لم تقوموا بإضافة أي مشرف  </option>';
+                }
+                ?>
+            </select>
+        </div>
+        <div>
+            <label for="note">ملاحظات:</label>
+            <textarea id="note" name="note"></textarea>
+        </div>
+        <div class="d-flex justify-content-center">
+        <input
+          class="button btn btn-success"
+          type="submit"
+          name="submit"
+          value="إضافة البيانات" />
+      </div>
+
+
+    </form>
     <!-- Main Content -->
     <div class="main-content">
         <div class="container-fluid mt-4">
@@ -252,7 +292,7 @@ $name = $_SESSION['user_number'];
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>https://example.com</td>
+                                    <td>الأرشيف</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-danger btn-sm" title="حذف">
